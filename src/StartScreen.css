@@ -1,0 +1,78 @@
+/* Full screen background */
+.start-screen {
+  height: 100vh;
+  width: 100vw;
+  background: url("./images/background.jpg") no-repeat center center;
+  background-size: cover;       /* ensures full image covers */
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+/* Soft aqua overlay for better readability */
+.overlay {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background: rgba(5, 150, 170, 0.35);
+  backdrop-filter: blur(1px);
+}
+
+/* Main content centered */
+.content-wrapper {
+  position: relative;
+  text-align: center;
+  z-index: 2;
+  margin-top: -50px; 
+}
+
+/* Logo */
+.logo {
+  width: 110px;
+  margin-bottom: 18px;
+  filter: brightness(1.1);
+}
+
+/* Title */
+.title {
+  font-size: 22px;
+  color: white;
+  font-weight: 500;
+  margin-top: 8px;
+}
+
+/* Subtitle */
+.subtitle {
+  font-size: 18px;
+  margin-top: 10px;
+  color: #e8faff;
+}
+
+/* Start Button */
+.start-btn {
+  margin-top: 35px;
+  padding: 18px 75px;
+  background: #ffffff;
+  border: none;
+  border-radius: 40px;
+  font-size: 28px;
+  color: #007fa8;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.25s ease;
+  box-shadow: 0px 4px 20px rgba(0, 80, 110, 0.2);
+}
+
+.start-btn:hover {
+  transform: scale(1.05);
+}
+
+/* Hint text */
+.hint {
+  margin-top: 28px;  
+  color: #ecfaff;
+  font-size: 15px;
+  opacity: 0.95;
+}

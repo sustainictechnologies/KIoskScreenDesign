@@ -1,0 +1,79 @@
+.dispense-wrapper {
+  width: 100%;
+  height: 100vh;
+  background: linear-gradient(to bottom, #e5fdff, #f9fefe);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 40px;
+}
+
+.title {
+  font-size: 26px;
+  font-weight: 600;
+  color: #1b7fa7;
+}
+
+.subtitle {
+  margin-top: 5px;
+  font-size: 24px;
+  color: #4a4c50;
+}
+
+.tank-container {
+  width: 320px;
+  height: 340px;
+  border-radius: 25px;
+  margin-top: 40px;
+  background: white;
+  border: 10px solid #25d9ff;
+  position: relative;
+  overflow: hidden;
+}
+
+.water-fill {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background: #00cfff;
+  transition: height 0.2s linear;
+}
+
+.water-icon {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  width: 110px;
+  height: 110px;
+  opacity: 0.3;
+  transform: translate(-50%, -50%);
+}
+
+.progress-section {
+  width: 60%;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 40px;
+  font-size: 18px;
+}
+
+.progress-bar-outer {
+  width: 60%;
+  height: 12px;
+  background: #e3e3e3;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.progress-bar-inner {
+  height: 100%;
+  background: #02bee7;
+  border-radius: 20px;
+  transition: width 0.2s linear;
+}
+
+.footer-text {
+  margin-top: 20px;
+  font-size: 20px;
+  color: #777;
+}

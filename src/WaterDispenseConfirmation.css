@@ -1,0 +1,136 @@
+.confirm-container {
+  width: 100%;
+  min-height: 100vh;
+  background: linear-gradient(to bottom, #e8f9ff, #f7ffff);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30px 20px;
+  font-family: "Inter", sans-serif;
+}
+
+.confirm-top {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.check-circle {
+  width: 95px;
+  height: 95px;
+  border-radius: 50%;
+  background: #d6ffe3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  border: 4px solid #00a53a;
+}
+
+.check-circle span {
+  font-size: 45px;
+  color: #009e36;
+  font-weight: bold;
+}
+
+.confirm-title {
+  margin-top: 15px;
+  font-size: 26px;
+  color: #0b3d0b;
+  font-weight: 600;
+}
+
+.confirm-subtitle {
+  margin-top: 5px;
+  color: #4a4a4a;
+  font-size: 18px;
+}
+
+.confirm-stats {
+  display: flex;
+  justify-content: center;
+  gap: 35px;
+  margin-top: 30px;
+  flex-wrap: wrap;
+}
+
+.stat-card {
+  width: 260px;
+  background: white;
+  padding: 25px;
+  border-radius: 18px;
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.12);
+  text-align: center;
+}
+
+.stat-label {
+  color: #5c5c5c;
+  font-size: 17px;
+}
+
+.stat-value {
+  color: #0088b5;
+  font-size: 34px;
+  margin-top: 8px;
+  font-weight: 600;
+}
+
+.stat-value-green {
+  color: #009b28;
+  font-size: 34px;
+  margin-top: 8px;
+  font-weight: 600;
+}
+
+.summary-card {
+  width: 90%;
+  max-width: 700px;
+  background: white;
+  padding: 30px;
+  border-radius: 18px;
+  margin-top: 35px;
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.12);
+}
+
+.summary-card h3 {
+  font-size: 20px;
+  margin-bottom: 20px;
+  color: #333;
+  font-weight: 600;
+}
+
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px 0;
+  font-size: 18px;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.summary-row:last-child {
+  border-bottom: none;
+}
+
+.deducted {
+  color: red;
+  font-weight: 600;
+}
+
+.continue-btn {
+  width: 90%;
+  max-width: 600px;
+  background: linear-gradient(to right, #00a8ce, #008cc5);
+  padding: 18px;
+  border-radius: 18px;
+  color: white;
+  text-align: center;
+  margin-top: 40px;
+  font-size: 22px;
+  border: none;
+  cursor: pointer;
+  font-weight: 500;
+  box-shadow: 0px 4px 15px rgba(0, 168, 200, 0.4);
+}
+
+.continue-btn:hover {
+  opacity: 0.92;
+}

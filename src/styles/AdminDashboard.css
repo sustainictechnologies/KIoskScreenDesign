@@ -1,0 +1,265 @@
+/* MAIN LAYOUT */
+.dashboard-container {
+  width: 100%;
+  min-height: 100vh;
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  background: #eefdfd;
+  font-family: "Segoe UI", sans-serif;
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+
+/* HEADER */
+.dashboard-header {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.dashboard-header h2 {
+  font-size: 28px;
+  font-weight: 700;
+}
+
+.logout-btn {
+  position: absolute !important;
+  top: 15px;
+  right: 20px;
+
+  /* FIX: Prevent stretching */
+  width: auto !important;
+  min-width: 110px !important;
+  max-width: 140px !important;
+
+  display: inline-block !important;
+
+  padding: 10px 18px !important;
+
+  font-size: 17px !important;
+  font-weight: 700;
+  color: rgb(215, 29, 29);
+
+  background: linear-gradient(to bottom, #ff4d4d, #cc0000);
+  border: none;
+  border-radius: 35px;
+
+  cursor: pointer;
+  white-space: nowrap;
+  box-shadow: 0px 4px 12px rgba(0,0,0,0.25);
+
+  /* override any flexbox growth */
+  flex: 0 0 auto !important;
+}
+
+.logout-btn:hover {
+  transform: translateY(-2px);
+}
+
+.logout-btn:active {
+  transform: translateY(0);
+}
+
+
+/* WALLET CARD */
+.wallet-card {
+  margin-top: 30px;
+  width: 100%;
+  max-width: 100%;
+  background: linear-gradient(to right, #01a7c2, #019ed1);
+  padding: 32px 40px;
+  border-radius: 30px;
+  display: flex;
+  align-items: center;
+  color: white;
+  gap: 25px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+  box-sizing: border-box;
+}
+
+.wallet-icon {
+  width: 55px;
+  height: 55px;
+  background: white;
+  border-radius: 16px;
+}
+
+.wallet-title {
+  font-size: 20px;
+  margin: 0;
+}
+
+.wallet-amount {
+  font-size: 42px;
+  margin: 0;
+  margin-top: 4px;
+  font-weight: 700;
+}
+
+/* WATER QUALITY */
+.section-title {
+  margin-top: 40px;
+  font-size: 22px;
+  font-weight: 600;
+}
+
+/* QUANTITY SECTION */
+.quantity-wrapper {
+  margin-top: 20px;
+  background: white;
+  padding: 30px;
+  border-radius: 25px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+}
+
+.qty-options {
+  display: flex;
+  gap: 20px;
+}
+
+.qty-btn {
+  flex: 1;
+  padding: 18px;
+  font-size: 20px;
+  border-radius: 20px;
+  border: none;
+  background: #f1f1f1;
+  cursor: pointer;
+}
+
+.qty-btn.active {
+  background: #019ed1;
+  color: #fff;
+}
+
+.custom-input {
+  width: 100%;
+  margin-top: 20px;
+  padding: 18px;
+  border-radius: 18px;
+  border: 2px solid #e5e5e5;
+  font-size: 18px;
+}
+
+.cost-box {
+  background: #eafcff;
+  padding: 15px 20px;
+  border-radius: 18px;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 25px;
+}
+
+.dispense-btn {
+  width: 100%;
+  background: #019ed1;
+  color: white;
+  padding: 22px;
+  font-size: 22px;
+  border: none;
+  border-radius: 20px;
+  margin-top: 30px;
+  cursor: pointer;
+}
+
+/* RESPONSIVE DESIGN */
+@media (max-width: 768px) {
+  .dashboard-container {
+    padding: 15px;
+  }
+
+  .dashboard-header h2 {
+    font-size: 24px;
+  }
+
+  .wallet-card {
+    padding: 24px 20px;
+    flex-direction: column;
+    text-align: center;
+    gap: 15px;
+  }
+
+  .wallet-icon {
+    width: 45px;
+    height: 45px;
+  }
+
+  .wallet-amount {
+    font-size: 36px;
+  }
+
+  .quality-wrapper {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .quality-card {
+    padding: 20px;
+  }
+
+  .quality-icon {
+    width: 45px;
+    height: 45px;
+  }
+
+  .quality-value {
+    font-size: 32px;
+  }
+
+  .qty-options {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .qty-btn {
+    padding: 15px;
+    font-size: 18px;
+  }
+
+  .custom-input {
+    padding: 15px;
+    font-size: 16px;
+  }
+
+  .dispense-btn {
+    padding: 18px;
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .dashboard-container {
+    padding: 10px;
+  }
+
+  .dashboard-header h2 {
+    font-size: 20px;
+  }
+
+  .wallet-card {
+    padding: 20px 15px;
+  }
+
+  .wallet-amount {
+    font-size: 32px;
+  }
+
+  .section-title {
+    font-size: 20px;
+  }
+
+  .quality-card {
+    padding: 20px;
+  }
+
+  .quality-value {
+    font-size: 28px;
+  }
+
+  .quantity-wrapper {
+    padding: 20px;
+  }
+}

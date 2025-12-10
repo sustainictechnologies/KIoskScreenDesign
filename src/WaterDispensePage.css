@@ -1,0 +1,215 @@
+/* WaterDispensePage.css */
+.water-dispense-page {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f0f4f8 0%, #d9e2ec 100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.container {
+  width: 100%;
+  max-width: 420px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+  padding: 40px 32px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Dispensing Complete Header */
+.dispensing-header {
+  font-size: 24px;
+  font-weight: 700;
+  color: #2d3748;
+  text-align: center;
+  margin-bottom: 8px;
+  line-height: 1.3;
+  letter-spacing: -0.3px;
+}
+
+/* Success Message */
+.success-message {
+  font-size: 16px;
+  font-weight: 400;
+  color: #4a5568;
+  text-align: center;
+  margin-bottom: 32px;
+  line-height: 1.5;
+}
+
+/* Data Section */
+.data-section {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin-bottom: 36px;
+  padding-bottom: 32px;
+  border-bottom: 1.5px solid #e2e8f0;
+}
+
+.data-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.data-label {
+  font-size: 14px;
+  font-weight: 500;
+  color: #718096;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 2px;
+}
+
+.data-value {
+  font-size: 32px;
+  font-weight: 700;
+  color: #1a202c;
+  line-height: 1.2;
+}
+
+/* Transaction Summary */
+.transaction-summary {
+  margin-bottom: 36px;
+}
+
+.summary-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #2d3748;
+  margin-bottom: 20px;
+  text-align: center;
+  letter-spacing: -0.2px;
+}
+
+.summary-items {
+  background: #f7fafc;
+  border-radius: 8px;
+  padding: 20px 24px;
+  border: 1px solid #e2e8f0;
+}
+
+.summary-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.summary-item:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.summary-item:first-child {
+  padding-top: 0;
+}
+
+.item-label {
+  font-size: 15px;
+  font-weight: 500;
+  color: #4a5568;
+  line-height: 1.5;
+}
+
+.item-value {
+  font-size: 16px;
+  font-weight: 600;
+  color: #1a202c;
+  line-height: 1.5;
+}
+
+.summary-item:last-child .item-value {
+  color: #e53e3e;
+  font-weight: 700;
+}
+
+/* Continue Button */
+.continue-container {
+  display: flex;
+  justify-content: center;
+}
+
+.continue-button {
+  background: linear-gradient(135deg, #4299e1 0%, #3182ce 100%);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 16px 48px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 8px rgba(66, 153, 225, 0.3);
+  min-width: 180px;
+  letter-spacing: 0.3px;
+}
+
+.continue-button:hover {
+  background: linear-gradient(135deg, #3182ce 0%, #2b6cb0 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(66, 153, 225, 0.4);
+}
+
+.continue-button:active {
+  transform: translateY(0);
+  box-shadow: 0 1px 4px rgba(66, 153, 225, 0.3);
+}
+
+.continue-button:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.3);
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+  .container {
+    padding: 32px 24px;
+    margin: 0 16px;
+  }
+
+  .dispensing-header {
+    font-size: 22px;
+  }
+
+  .data-value {
+    font-size: 28px;
+  }
+
+  .continue-button {
+    width: 100%;
+    max-width: 280px;
+  }
+}
+
+@media (max-width: 360px) {
+  .container {
+    padding: 28px 20px;
+  }
+
+  .dispensing-header {
+    font-size: 20px;
+  }
+
+  .data-value {
+    font-size: 24px;
+  }
+
+  .summary-items {
+    padding: 16px 20px;
+  }
+
+  .item-label,
+  .item-value {
+    font-size: 14px;
+  }
+}

@@ -1,0 +1,76 @@
+/* WRAPPER */
+.quality-wrapper {
+  margin-top: 20px;
+  display: flex;
+  gap: 28px;
+  width: 100%;
+}
+
+/* CARD */
+.quality-card {
+  flex: 1;
+  background: #ffffff;
+  padding: 26px 28px;
+  border-radius: 22px;
+  box-shadow: 0px 6px 25px rgba(0, 180, 200, 0.18);
+  border: 1px solid #e0f9ff;
+}
+
+/* ICON BOX */
+.quality-icon {
+  width: 55px;
+  height: 55px;
+  border-radius: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 14px;
+}
+
+/* Specific icon bg colors */
+.ph-icon {
+  background: #e8f0ff;
+}
+
+.tds-icon {
+  background: #d9f8ff;
+}
+
+.turbidity-icon {
+  background: #d8fff2;
+}
+
+/* LABEL */
+.quality-label {
+  font-size: 18px;
+  font-weight: 500;
+  color: #2d2d2d;
+  margin-bottom: 8px;
+}
+
+/* VALUE */
+.quality-value {
+  font-size: 38px;
+  font-weight: 600;
+  margin: 0;
+}
+
+/* Colors */
+.quality-value.blue {
+  color: #0050ff;
+}
+
+.quality-value.aqua {
+  color: #00a7c4;
+}
+
+.quality-value.green {
+  color: #009f8b;
+}
+
+/* DESCRIPTION */
+.quality-desc {
+  margin-top: 5px;
+  color: #6a6a6a;
+  font-size: 16px;
+}
