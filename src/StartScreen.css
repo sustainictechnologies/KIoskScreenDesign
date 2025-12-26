@@ -1,7 +1,7 @@
 /* Full screen background */
-.start-screen {
+.add-container {
   height: 100vh;
-  width: 100vw;
+  width: 75vw;
   background: url("./images/background.jpg") no-repeat center center;
   background-size: cover;       /* ensures full image covers */
   position: relative;
@@ -9,6 +9,22 @@
   justify-content: center;
   align-items: center;
   overflow: hidden;
+}
+
+.start-screen {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  height: 100vh;
+}
+
+.main-container{
+  height: 100vh;
+  width: 25vw;
+  background: #f6fbfd;
+  padding: 8px;
+  box-sizing: border-box;
+  overflow-y: auto;
 }
 
 /* Soft aqua overlay for better readability */
@@ -76,3 +92,22 @@
   font-size: 15px;
   opacity: 0.95;
 }
+
+ button {
+        padding: 12px 22px;
+        margin: 8px;
+        font-size: 16px;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: 0.2s;
+        color: white;
+    }
+    
+ .btn-green {
+        background: #10b981;
+    }
+
+    .btn-green:hover {
+        background: #059669;
+    }
