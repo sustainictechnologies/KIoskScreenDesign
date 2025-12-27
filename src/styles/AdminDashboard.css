@@ -1,24 +1,28 @@
+/* Ensure the app fits the viewport with no scrollbars */
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
 /* MAIN LAYOUT */
 .dashboard-container {
+  box-sizing: border-box;
+  height: 100vh;
   width: 100%;
-  min-height: 100vh;
-  padding: 20px;
-  max-width: 1200px;
-  margin: 0 auto;
+  max-width: 100%;
+  padding: 16px;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
   background: #eefdfd;
   font-family: "Segoe UI", sans-serif;
-  box-sizing: border-box;
-  overflow-x: hidden;
+  overflow: hidden;
 }
 
 /* HEADER */
-.dashboard-header {
-  position: relative;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 30px;
-}
 
 .dashboard-header h2 {
   font-size: 28px;
@@ -45,11 +49,9 @@
 
   background: linear-gradient(to bottom, #ff4d4d, #cc0000);
   border: none;
-  border-radius: 35px;
 
   cursor: pointer;
   white-space: nowrap;
-  box-shadow: 0px 4px 12px rgba(0,0,0,0.25);
 
   /* override any flexbox growth */
   flex: 0 0 auto !important;
@@ -66,18 +68,18 @@
 
 /* WALLET CARD */
 .wallet-card {
-  margin-top: 30px;
+  margin-top: 8px;
   width: 100%;
-  max-width: 100%;
   background: linear-gradient(to right, #01a7c2, #019ed1);
-  padding: 32px 40px;
-  border-radius: 30px;
+  padding: 20px 22px;
+  border-radius: 20px;
   display: flex;
   align-items: center;
   color: white;
-  gap: 25px;
+  gap: 16px;
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
   box-sizing: border-box;
+  flex: 0 0 auto;
 }
 
 .wallet-icon {
@@ -101,27 +103,35 @@
 
 /* WATER QUALITY */
 .section-title {
-  margin-top: 40px;
-  font-size: 22px;
+  margin-top: 5px;
+  font-size: 15px;
   font-weight: 600;
+  flex: 0 0 auto;
 }
 
 /* QUANTITY SECTION */
 .quantity-wrapper {
-  margin-top: 20px;
+  align-self: anchor-center;
+  width: fit-content;
+  margin-top: 10px;
   background: white;
-  padding: 30px;
-  border-radius: 25px;
+  padding: 18px;
+  border-radius: 18px;
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  flex: 1 1 auto;
+  overflow: hidden;
 }
 
 .qty-options {
   display: flex;
-  gap: 20px;
+  gap: 12px;
+  flex-wrap: wrap;
 }
 
 .qty-btn {
-  flex: 1;
   padding: 18px;
   font-size: 20px;
   border-radius: 20px;
@@ -137,32 +147,36 @@
 
 .custom-input {
   width: 100%;
-  margin-top: 20px;
-  padding: 18px;
-  border-radius: 18px;
+  margin-top: 8px;
+  padding: 14px;
+  border-radius: 14px;
   border: 2px solid #e5e5e5;
-  font-size: 18px;
+  font-size: 16px;
+  box-sizing: border-box;
+  flex: 0 0 auto;
 }
 
 .cost-box {
   background: #eafcff;
-  padding: 15px 20px;
-  border-radius: 18px;
+  padding: 12px 14px;
+  border-radius: 14px;
   display: flex;
   justify-content: space-between;
-  margin-top: 25px;
+  margin-top: 12px;
+  flex: 0 0 auto;
 }
 
 .dispense-btn {
   width: 100%;
   background: #019ed1;
   color: white;
-  padding: 22px;
-  font-size: 22px;
+  padding: 16px;
+  font-size: 18px;
   border: none;
-  border-radius: 20px;
-  margin-top: 30px;
+  border-radius: 14px;
+  margin-top: 12px;
   cursor: pointer;
+  flex: 0 0 auto;
 }
 
 /* RESPONSIVE DESIGN */

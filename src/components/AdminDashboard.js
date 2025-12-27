@@ -20,17 +20,8 @@ export default function AdminDashboard() {
     <div className="dashboard-container">
       <header className="dashboard-header">
         <h2>Welcome, Demo User</h2>
-        <button className="logout-btn" onClick={() => navigate("/")}>LOGOUT</button>
+        <button className="logout-btn" onClick={() => navigate("/")}>Log Out</button>
       </header>
-
-      {/* Wallet Card */}
-      <div className="wallet-card">
-        <div className="wallet-icon"></div>
-        <div>
-          <p className="wallet-title">Current Wallet Balance</p>
-          <h1 className="wallet-amount">₹450.00</h1>
-        </div>
-      </div>
 
       {/* Water Quality Section */}
       <h3 className="section-title">Water Quality</h3>
@@ -82,9 +73,8 @@ export default function AdminDashboard() {
         />
 
         {/* Estimated Cost */}
-        <div className="cost-box">
-          <p>Estimated Cost:</p>
-          <h3>₹{estimatedCost}</h3>
+         <div className="cost-box">
+          <p>Estimated Cost: ₹{estimatedCost}</p>
         </div>
 
         <button className="dispense-btn" onClick={handleDispense}>Dispense Now</button>

@@ -20,49 +20,24 @@ const QRBarcodeScanner = ({
   });
 
   useEffect(() => {
-    let stream;
-    let scanTimer;
     let animReq;
+    let scanTimer;
     let detector;
+    let canvas;
 
+    const STREAM_URL = process.env.REACT_APP_STREAM_URL;
     const hasBarcodeDetector = 'BarcodeDetector' in window;
     setSupported(prev => ({ ...prev, barcodeDetector: hasBarcodeDetector }));
 
-    const startCamera = async () => {
+    const startStream = async () => {
       try {
-        // Enumerate cameras
-        const mediaDevices = await navigator.mediaDevices.enumerateDevices();
-        const cams = mediaDevices.filter(d => d.kind === 'videoinput');
-        setDevices(cams);
-        const preferredId = deviceId || (cams[0]?.deviceId ?? undefined);
-
-        stream = await navigator.mediaDevices.getUserMedia({
-          video: {
-            deviceId: preferredId ? { exact: preferredId } : undefined,
-            facingMode: preferredId ? undefined : { ideal: 'environment' },
-            width: { ideal: 1280 },
-            height: { ideal: 720 },
-            focusMode: 'continuous',
-            // Torch hint; actual control is via track.applyConstraints
-            advanced: [{ torch: torchOn }],
-          },
-          audio: false,
-        });
-
-        // Torch support detection
-        const track = stream.getVideoTracks()[0];
-        const capabilities = track.getCapabilities ? track.getCapabilities() : {};
-        setSupported(prev => ({ ...prev, torch: !!capabilities.torch }));
-
-        // Apply torch constraint if supported
-        if (torchOn && capabilities.torch) {
-          await track.applyConstraints({ advanced: [{ torch: true }] });
-        }
-
-        // Attach stream to video
+        // Attach network stream to video element (MJPEG or other stream)
         if (videoRef.current) {
-          videoRef.current.srcObject = stream;
-          await videoRef.current.play();
+          videoRef.current.crossOrigin = 'anonymous';
+          videoRef.current.src = STREAM_URL;
+          // Some MJPEG streams don't autoplay; try play and ignore promise rejection
+          const p = videoRef.current.play();
+          if (p && p.catch) p.catch(() => {});
         }
 
         // Prepare detector
@@ -75,6 +50,9 @@ const QRBarcodeScanner = ({
           });
         }
 
+        // Create an offscreen canvas for frame capture
+        canvas = document.createElement('canvas');
+
         // Start overlay animation
         animateOverlay();
 
@@ -85,35 +63,44 @@ const QRBarcodeScanner = ({
         // Timeout -> error popup
         scanTimer = setTimeout(() => {
           if (isScanning) {
-            setError('Scan timed out. Make sure the code is well-lit and aligned inside the frame.');
+            setError('Scan timed out. Make sure the camera stream is reachable and code is visible.');
             setIsScanning(false);
           }
         }, timeoutMs);
       } catch (e) {
-        setError('Camera access failed. Please allow camera permission or try another device.');
+        setError('Unable to load stream. Check the stream URL and network connectivity.');
         setIsScanning(false);
       }
 
       async function scanLoop() {
         if (!videoRef.current || !isScanning) return;
         try {
-          let results = [];
-          if (detector) {
-            results = await detector.detect(videoRef.current);
+          // Draw current frame into canvas for detection
+          const v = videoRef.current;
+          const w = v.videoWidth || v.clientWidth || 640;
+          const h = v.videoHeight || v.clientHeight || 480;
+          if (w && h) {
+            if (canvas.width !== w || canvas.height !== h) {
+              canvas.width = w;
+              canvas.height = h;
+            }
+            const ctx = canvas.getContext('2d');
+            try { ctx.drawImage(v, 0, 0, w, h); } catch (e) { /* drawing may fail until stream ready */ }
+
+            if (detector) {
+              const results = await detector.detect(canvas);
+              if (results && results.length > 0) {
+                pulseSuccess();
+                if (singleScan) setIsScanning(false);
+                navigate('/auth');
+                return;
+              }
+            }
           }
-          // Fallback idea: We could capture a frame to canvas and try a JS decoder,
-          // but to keep it lightweight, we rely on BarcodeDetector when available.
-          if (results && results.length > 0) {
-            const text = results[0].rawValue || results[0].format || 'SCANNED';
-            pulseSuccess();
-            if (singleScan) setIsScanning(false);
-            navigate('/auth');
-            return;
-          }
-        } catch {
+        } catch (err) {
           // Non-fatal; keep scanning
         }
-        requestAnimationFrame(scanLoop);
+        animReq = requestAnimationFrame(scanLoop);
       }
 
       function animateOverlay() {
@@ -128,7 +115,7 @@ const QRBarcodeScanner = ({
           if (!frame || !scanLine) return;
           const rect = frame.getBoundingClientRect();
           const height = rect.height;
-          y += dir * 2.2; // speed in px per frame
+          y += dir * 2.2;
           if (y > height - 4) dir = -1;
           if (y < 0) dir = 1;
           scanLine.style.transform = `translateY(${y}px)`;
@@ -145,17 +132,20 @@ const QRBarcodeScanner = ({
       }
     };
 
-    startCamera();
+    startStream();
 
     return () => {
       cancelAnimationFrame(animReq);
       clearTimeout(scanTimer);
-      if (stream) {
-        stream.getTracks().forEach(t => t.stop());
+      if (videoRef.current) {
+        try {
+          videoRef.current.pause();
+          videoRef.current.removeAttribute('src');
+        } catch {}
       }
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [deviceId, torchOn]);
+  }, []);
 
   const handleDismissError = () => {
     setError('');
@@ -193,28 +183,6 @@ const QRBarcodeScanner = ({
         <button className="btn secondary" onClick={() => navigate('/')}>Go back</button>
 
         <div className="spacer" />
-
-        <select
-          className="select"
-          value={deviceId}
-          onChange={e => setDeviceId(e.target.value)}
-          aria-label="Camera"
-        >
-          <option value="">Default camera</option>
-          {devices.map(d => (
-            <option key={d.deviceId} value={d.deviceId}>{d.label || `Camera ${d.deviceId.slice(0, 6)}`}</option>
-          ))}
-        </select>
-
-        <button
-          className="btn"
-          onClick={toggleTorch}
-          disabled={!supported.torch}
-          title={supported.torch ? 'Toggle flashlight' : 'Torch not supported'}
-        >
-          {torchOn ? 'Torch: On' : 'Torch: Off'}
-        </button>
-
         {/* Test button for simulation */}
         <button
           className="btn test-scan"

@@ -11,7 +11,6 @@
 
 .confirm-top {
   text-align: center;
-  margin-top: 10px;
 }
 
 .check-circle {
@@ -49,14 +48,13 @@
   display: flex;
   justify-content: center;
   gap: 35px;
-  margin-top: 30px;
+  margin-top: 15px;
   flex-wrap: wrap;
 }
 
 .stat-card {
   width: 260px;
   background: white;
-  padding: 25px;
   border-radius: 18px;
   box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.12);
   text-align: center;
@@ -69,25 +67,25 @@
 
 .stat-value {
   color: #0088b5;
-  font-size: 34px;
+  font-size: 30px;
   margin-top: 8px;
-  font-weight: 600;
+  font-weight: 400;
 }
 
 .stat-value-green {
   color: #009b28;
-  font-size: 34px;
+  font-size: 30px;
   margin-top: 8px;
-  font-weight: 600;
+  font-weight: 400;
 }
 
 .summary-card {
   width: 90%;
   max-width: 700px;
   background: white;
-  padding: 30px;
-  border-radius: 18px;
-  margin-top: 35px;
+  padding: 15px;
+  border-radius: 10px;
+  margin-top: 15px;
   box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.12);
 }
 

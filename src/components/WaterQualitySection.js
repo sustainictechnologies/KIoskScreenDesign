@@ -5,9 +5,8 @@ export default function WaterQualitySection() {
   return (
     <div className="quality-wrapper">
       {/* PH LEVEL */}
-      <div className="quality-card">
+      <div className="quality-card row">
         <div className="quality-icon ph-icon">
-          {/* pH Icon */}
           <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
             <path
               d="M3 12C6 12 6 6 9 6C12 6 12 18 15 18C18 18 18 12 21 12"
@@ -17,14 +16,12 @@ export default function WaterQualitySection() {
             />
           </svg>
         </div>
-
         <p className="quality-label">pH Level</p>
         <h2 className="quality-value blue">7.2</h2>
-        <p className="quality-desc">Neutral</p>
       </div>
 
       {/* TDS LEVEL */}
-      <div className="quality-card">
+      <div className="quality-card row">
         <div className="quality-icon tds-icon">
           {/* TDS Icon */}
           <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
@@ -40,11 +37,10 @@ export default function WaterQualitySection() {
 
         <p className="quality-label">TDS Level</p>
         <h2 className="quality-value aqua">145</h2>
-        <p className="quality-desc">ppm - Good</p>
       </div>
 
       {/* TURBIDITY */}
-      <div className="quality-card">
+      <div className="quality-card row">
         <div className="quality-icon turbidity-icon">
           {/* Turbidity Icon */}
           <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
@@ -61,7 +57,6 @@ export default function WaterQualitySection() {
 
         <p className="quality-label">Turbidity</p>
         <h2 className="quality-value green">0.8</h2>
-        <p className="quality-desc">NTU - Clear</p>
       </div>
     </div>
   );
