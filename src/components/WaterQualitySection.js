@@ -1,7 +1,7 @@
 import React from "react";
 import "./WaterQualitySection.css";
 
-export default function WaterQualitySection() {
+export default function WaterQualitySection({ data }) {
   return (
     <div className="quality-wrapper">
       {/* PH LEVEL */}
@@ -17,7 +17,7 @@ export default function WaterQualitySection() {
           </svg>
         </div>
         <p className="quality-label">pH Level</p>
-        <h2 className="quality-value blue">7.2</h2>
+        <h2 className="quality-value blue">{data ? data.sensors.ph : "--"}</h2>
       </div>
 
       {/* TDS LEVEL */}
@@ -36,7 +36,7 @@ export default function WaterQualitySection() {
         </div>
 
         <p className="quality-label">TDS Level</p>
-        <h2 className="quality-value aqua">145</h2>
+        <h2 className="quality-value aqua">{data ? data.sensors.tds.toFixed(2) : "--"}</h2>
       </div>
 
       {/* TURBIDITY */}
@@ -56,7 +56,7 @@ export default function WaterQualitySection() {
         </div>
 
         <p className="quality-label">Turbidity</p>
-        <h2 className="quality-value green">0.8</h2>
+        <h2 className="quality-value green">{data ? data.sensors.turbidity : "--"}</h2>
       </div>
     </div>
   );

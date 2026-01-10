@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom";
 
 import StartScreen from "./StartScreen";
 import QRBarcodeScanner from "./QRBarcodeScanner";
+import CameraScanner from "./CameraScanner";
 import AuthenticationScreen from "./AuthenticationScreen";
 import AuthenticationSuccess from "./AuthenticationSuccess";
 import AdminDashboard from "./components/AdminDashboard";
@@ -30,7 +31,7 @@ function AppRoutes() {
   return (
     <Routes>
       <Route path="/" element={<StartScreen onStart={() => navigate("/qr")} />} />
-      <Route path="/qr" element={<QRBarcodeScanner />} />
+      <Route path="/qr" element={<CameraScanner />} />
       <Route path="/auth" element={<AuthenticationScreen />} />
       <Route path="/success" element={<AuthenticationSuccess />} />
       <Route path="/admin" element={<AdminDashboard />} />

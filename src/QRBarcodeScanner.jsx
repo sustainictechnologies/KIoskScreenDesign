@@ -162,8 +162,8 @@ const QRBarcodeScanner = ({
       </header>
 
       <div className="scanner-container">
-        <video ref={videoRef} className="video" playsInline muted />
-
+        {/* <video ref={videoRef} className="video" playsInline muted /> */}
+<img src='http://10.42.0.148:81/stream'></img>
         {/* Overlay UI */}
         <div ref={overlayRef} className="overlay">
           <div className="scan-frame">

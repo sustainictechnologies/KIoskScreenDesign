@@ -23,9 +23,33 @@ function QuantitySelector({ costPerMl = 0.01, presetSelected = 500, onDispense }
     setCustomMl('');
   };
 
-  const handleDispense = () => {
+  const handleDispense = async () => {
+    console.log("handle dispensing called")
     if (activeMl > 0) {
-      onDispense?.(activeMl, estimatedCost);
+      try {
+        const response = await fetch("/dispense", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            ml: activeMl,
+          }),
+        });
+
+        if (!response.ok) {
+          throw new Error("Dispense API failed");
+        }
+
+        const data = await response.json();
+
+        // Call existing callback after successful API call
+        //onDispense?.(activeMl, estimatedCost);
+
+        console.log("Dispense success:", data);
+      } catch (error) {
+        console.error("Error dispensing:", error);
+      }
     }
   };
 
